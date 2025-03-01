@@ -1,11 +1,12 @@
 # Crypto Data Warehouse ETL & Visualization Project
+<img src="https://i.ibb.co/WWh7JHGS/aa.png" alt="NCHMF" width="500"/>
 
 
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [System Architecture](#system-architecture)
 - [Technologies Used](#technologies-used)
+- [System Architecture](#system-architecture)
 - [Setup Instructions](#setup-instructions)
 - [Data Pipeline](#data-pipeline)
 - [Usage](#usage)
@@ -16,6 +17,14 @@
 ## Introduction
 
 Crypto Data Warehouse ETL & Visualization Project is a complete system for collecting, processing, storing, and visualizing cryptocurrency market data. The data is fetched from the CoinGecko API, stored as CSV files on MinIO, then transformed and loaded into a PostgreSQL database following the Star Schema model with dimension and fact tables. Finally, the data is visualized and analyzed using Metabase.
+
+## Technologies Used
+- **Python**: Fetching and processing data from CoinGecko API.
+- **MinIO**: Object storage for raw CSV files.
+- **PostgreSQL**: Data warehouse with Star Schema design.
+- **Metabase**: Data visualization and dashboard creation.
+- **Docker Compose**: Orchestrates services like PostgreSQL, MinIO, and Metabase.
+- **Airflow (Optional)**: Automates and schedules ETL jobs.
 
 ## System Architecture
 
@@ -51,14 +60,6 @@ Crypto Data Warehouse ETL & Visualization Project is a complete system for colle
   - **Line Chart**: Tracks metrics like `current_price` and `market_cap` over time.
   - **Bar Chart**: Compares cryptocurrencies at a specific point in time.
   - **Scatter Plot**: Analyzes relationships between different metrics.
-
-## Technologies Used
-- **Python**: Fetching and processing data from CoinGecko API.
-- **MinIO**: Object storage for raw CSV files.
-- **PostgreSQL**: Data warehouse with Star Schema design.
-- **Metabase**: Data visualization and dashboard creation.
-- **Docker Compose**: Orchestrates services like PostgreSQL, MinIO, and Metabase.
-- **Airflow (Optional)**: Automates and schedules ETL jobs.
 
 ## Setup Instructions
 
@@ -120,5 +121,5 @@ This project successfully automates the extraction, transformation, and loading 
 - Enhance dashboards with more advanced analytics.
 
 ## Contact
-For any questions or feedback, please reach out to [your.email@example.com](mailto:your.email@example.com).
+For any questions or feedback, please reach out to [tmquang120202@gmail.com](mailto:tmquang120202@gmail.com).
 
