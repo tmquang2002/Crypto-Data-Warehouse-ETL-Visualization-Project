@@ -35,51 +35,60 @@ Crypto Data Warehouse ETL & Visualization Project is a complete system for colle
 ### 2. ETL & Data Warehouse Process
 
 **Extract (Data Extraction):**
-- The system periodically scans MinIO directories to check for newly uploaded CSV files.
-- These files contain cryptocurrency market data collected from the CoinGecko API.
+
+- The system fetches cryptocurrency market data from the CoinGecko API at scheduled intervals.
+- Data is saved in CSV format and uploaded to MinIO for storage.
 
 **Transform (Data Transformation):**
-- Raw CSV data is cleaned and standardized to fit the Star Schema model of the data warehouse.
-- Transformation steps include:
-  - Removing duplicate or invalid records.
-  - Converting timestamps into structured time dimensions (`dim_time`).
-  - Standardizing cryptocurrency information into the `dim_coin` table.
-  - Calculating and enriching key financial metrics such as `price_change_24h` and `market_cap` for storage in the `fact_coin_measurements` table.
+
+- The ETL pipeline scans MinIO for new CSV files and processes the raw data.
+- Data transformation steps include:
+  - Cleaning and handling missing or duplicate values.
+  - Standardizing timestamps and aligning data with `dim_time`.
+  - Mapping cryptocurrency information to `dim_coin`.
+  - Calculating and structuring market-related metrics for `fact_coin_measurements`.
 
 **Load (Data Loading):**
-- Processed data is inserted into a PostgreSQL database structured as a Star Schema:
-  - `dim_coin` stores static cryptocurrency details.
-  - `dim_time` captures time-based metadata (day, month, year, hour, etc.).
-  - `fact_coin_measurements` stores market metrics linked to `dim_coin` and `dim_time` via foreign keys.
-- Once loaded, the data is ready for querying, analysis, and visualization.
+
+- Transformed data is inserted into a PostgreSQL database designed as a Star Schema:
+  - `dim_coin`: Stores cryptocurrency details (e.g., name, symbol, category).
+  - `dim_time`: Contains structured time metadata (e.g., date, hour, minute).
+  - `fact_coin_measurements`: Stores daily price changes, market cap, and trade volume.
+- The structured data is then used for querying and visualization in Metabase.
 
 ### 3. Data Visualization with Metabase
+
 - **Metabase**: Used to build dashboards and visualize data from the Data Warehouse.
-- **Supported Charts**:
-  - **Line Chart**: Tracks metrics like `current_price` and `market_cap` over time.
-  - **Bar Chart**: Compares cryptocurrencies at a specific point in time.
-  - **Scatter Plot**: Analyzes relationships between different metrics.
+- **Supported Charts**:Line Chart, Bar Chart, Scatter Plot,...
 
 ## Setup Instructions
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/crypto-dwh-etl.git
+git clone https://github.com/tmquang2002/Crypto-Data-Warehouse-ETL-Visualization-Project.git
 cd crypto-dwh-etl
 ```
 
 ### 2. Configuration
-- Modify configuration files, DDL scripts (`init_dw.sql`), or connection parameters for PostgreSQL and MinIO based on your environment.
+- Modify configuration files, DDL scripts (`init.sql`), or connection parameters for PostgreSQL and MinIO based on your environment.
 
 ### 3. Start Docker Compose
 ```bash
 docker-compose up -d
 ```
-This command starts containers for PostgreSQL, MinIO, and Metabase.
+This command starts containers for Airflow, PostgreSQL, MinIO, and Metabase.
 
 ### 4. Run the ETL Pipeline
-- The Python ETL script scans new CSV files on MinIO, processes data, and loads it into PostgreSQL using the Star Schema model.
-- ETL scheduling can be managed via Airflow or Cron, depending on your setup.
+
+- Access the Airflow web interface at [http://localhost:8080](http://localhost:8080) and log in with the default credentials (`airflow` / `airflow`).
+- Activate the ETL DAG and trigger the job.
+<img src="https://i.ibb.co/gL0QSCgk/airflow.png" alt="NCHMF" width="500"/>
+- The ETL process includes the following steps:
+  1. **Crawl Data**: Fetch cryptocurrency market data from the CoinGecko API.
+  2. **Load to MinIO**: Store the raw data as CSV files in MinIO.
+  3. **Extract & Transform**: Scan MinIO for new CSV files, clean the data, and prepare it for storage.
+  4. **Load to Data Warehouse**: Insert transformed data into PostgreSQL following the Star Schema model.
+
 
 ### 5. Access MinIO
 
@@ -122,11 +131,4 @@ This project successfully automates the extraction, transformation, and loading 
 
 ## Contact
 For any questions or feedback, please reach out to [tmquang120202@gmail.com](mailto:tmquang120202@gmail.com).
-
-
-
-
-
-
-
 
