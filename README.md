@@ -9,7 +9,6 @@
 - [System Architecture](#system-architecture)
 - [Setup Instructions](#setup-instructions)
 - [Data Pipeline](#data-pipeline)
-- [Usage](#usage)
 - [Visualizations](#visualizations)
 - [Conclusion](#conclusion)
 - [Future Direction](#future-direction)
@@ -82,34 +81,35 @@ This command starts containers for PostgreSQL, MinIO, and Metabase.
 - The Python ETL script scans new CSV files on MinIO, processes data, and loads it into PostgreSQL using the Star Schema model.
 - ETL scheduling can be managed via Airflow or Cron, depending on your setup.
 
+### 5. Access MinIO
+
+- Open [http://localhost:9000](http://localhost:9000) in your browser.
+- Default credentials:
+  - **Access Key**: `minioadmin`
+  - **Secret Key**: `minioadmin`
+- Browse and manage stored CSV files.
+<img src="https://i.ibb.co/7NgZ31zt/min-IO-pic.png" alt="NCHMF" width="700"/>
+
 ### 5. Access Metabase
 - Open [http://localhost:3000](http://localhost:3000) in your browser.
-- Connect Metabase to the PostgreSQL database (`crypto`) and build dashboards as needed.
-
-## Data Pipeline
-
-![image](https://i.ibb.co/7jd8Ykg/ETL-process.png)
-
-- **Data Collection**: Fetches real-time market data from CoinGecko API and stores it in MinIO as CSV files.
-- **Processing & Storage**: Transforms and loads data into a PostgreSQL database.
-- **Visualization**: Data is analyzed and displayed using Metabase.
-
-## Usage
-
-### Explore Raw Data
-- View the latest cryptocurrency market data.
-
-### Access Metabase
-- Open [http://localhost:3000](http://localhost:3000).
 - Default credentials: `admin` / `admin`.
-- Connect to PostgreSQL and explore datasets.
+- Connect Metabase to the PostgreSQL database (`crypto`) and build dashboards as needed.
 
 ## Visualizations
 
-- **Price Trends**: Track `current_price` and `market_cap` over time.
-- **Comparison**: Compare different cryptocurrencies at a given timestamp.
-- **Relationships**: Analyze correlations between `volume` and `price change`.
-- **Real-Time Dashboards**: Monitor market performance interactively.
+<img src="https://i.ibb.co/Pz9FDN24/dashboard-coin-data.png" alt="NCHMF" width="700"/>
+
+The dashboard built in Metabase provides key insights into cryptocurrency market data, including:
+
+- **Coin Data Table**: Displays `current_price`, `market_cap`, `total_volume`, and `price_change_24h` for major cryptocurrencies.
+- **Price Trends & Market Volume**:
+  - A **line chart** visualizes Bitcoin's `current_price` and `total_volume` over time.
+  - Trends in `market_cap` are shown across different timestamps.
+- **Market Cap Breakdown**:
+  - A **pie chart** illustrates the market dominance of major cryptocurrencies.
+- **Price Change Analysis**:
+  - A **bar chart** compares the percentage price changes of different coins in the last 24 hours.
+
 
 ## Conclusion
 This project successfully automates the extraction, transformation, and loading of cryptocurrency market data into a structured Data Warehouse. With Metabase, users can interactively explore data and gain insights into market trends. The use of Docker Compose simplifies the deployment of PostgreSQL, MinIO, and Metabase, ensuring a streamlined setup.
@@ -122,4 +122,11 @@ This project successfully automates the extraction, transformation, and loading 
 
 ## Contact
 For any questions or feedback, please reach out to [tmquang120202@gmail.com](mailto:tmquang120202@gmail.com).
+
+
+
+
+
+
+
 
