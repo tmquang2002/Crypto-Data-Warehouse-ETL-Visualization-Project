@@ -1,0 +1,37 @@
+[2025-02-27T07:10:49.385+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_etl_dag.load_to_postgres_file manual__2025-02-27T07:10:42.300795+00:00 [queued]>
+[2025-02-27T07:10:49.399+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_etl_dag.load_to_postgres_file manual__2025-02-27T07:10:42.300795+00:00 [queued]>
+[2025-02-27T07:10:49.400+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-02-27T07:10:49.419+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_to_postgres_file> on 2025-02-27 07:10:42.300795+00:00
+[2025-02-27T07:10:49.425+0000] {standard_task_runner.py:60} INFO - Started process 1535 to run task
+[2025-02-27T07:10:49.429+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'crypto_etl_dag', 'load_to_postgres_file', 'manual__2025-02-27T07:10:42.300795+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/crypto_etl_dag.py', '--cfg-path', '/tmp/tmpx3u57_gq']
+[2025-02-27T07:10:49.432+0000] {standard_task_runner.py:88} INFO - Job 32: Subtask load_to_postgres_file
+[2025-02-27T07:10:49.493+0000] {task_command.py:423} INFO - Running <TaskInstance: crypto_etl_dag.load_to_postgres_file manual__2025-02-27T07:10:42.300795+00:00 [running]> on host d7538f12d10b
+[2025-02-27T07:10:49.593+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_etl_dag' AIRFLOW_CTX_TASK_ID='load_to_postgres_file' AIRFLOW_CTX_EXECUTION_DATE='2025-02-27T07:10:42.300795+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-27T07:10:42.300795+00:00'
+[2025-02-27T07:10:49.596+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-02-27T07:10:49.597+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/dags/scripts/load_to_postgres.py']
+[2025-02-27T07:10:49.611+0000] {subprocess.py:86} INFO - Output:
+[2025-02-27T07:13:05.422+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to None. Terminating instance.
+[2025-02-27T07:13:05.427+0000] {process_utils.py:131} INFO - Sending 15 to group 1535. PIDs of all processes in the group: [1536, 1535]
+[2025-02-27T07:13:05.427+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 1535
+[2025-02-27T07:13:05.428+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-02-27T07:13:05.429+0000] {subprocess.py:104} INFO - Sending SIGTERM signal to process group
+[2025-02-27T07:13:05.442+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 203, in execute
+    result = self.subprocess_hook.run_command(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/hooks/subprocess.py", line 91, in run_command
+    for raw_line in iter(self.sub_process.stdout.readline, b""):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2452, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-02-27T07:13:05.447+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=crypto_etl_dag, task_id=load_to_postgres_file, execution_date=20250227T071042, start_date=20250227T071049, end_date=20250227T071305
+[2025-02-27T07:13:05.466+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 32 for task load_to_postgres_file ((psycopg2.errors.ForeignKeyViolation) insert or update on table "task_fail" violates foreign key constraint "task_fail_ti_fkey"
+DETAIL:  Key (dag_id, task_id, run_id, map_index)=(crypto_etl_dag, load_to_postgres_file, manual__2025-02-27T07:10:42.300795+00:00, -1) is not present in table "task_instance".
+
+[SQL: INSERT INTO task_fail (task_id, dag_id, run_id, map_index, start_date, end_date, duration) VALUES (%(task_id)s, %(dag_id)s, %(run_id)s, %(map_index)s, %(start_date)s, %(end_date)s, %(duration)s) RETURNING task_fail.id]
+[parameters: {'task_id': 'load_to_postgres_file', 'dag_id': 'crypto_etl_dag', 'run_id': 'manual__2025-02-27T07:10:42.300795+00:00', 'map_index': -1, 'start_date': datetime.datetime(2025, 2, 27, 7, 10, 49, 386188, tzinfo=Timezone('UTC')), 'end_date': datetime.datetime(2025, 2, 27, 7, 13, 5, 446626, tzinfo=Timezone('UTC')), 'duration': 136}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj); 1535)
+[2025-02-27T07:13:05.480+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1535, status='terminated', exitcode=1, started='07:10:49') (1535) terminated with exit code 1
+[2025-02-27T07:13:05.481+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1536, status='terminated', started='07:10:49') (1536) terminated with exit code None

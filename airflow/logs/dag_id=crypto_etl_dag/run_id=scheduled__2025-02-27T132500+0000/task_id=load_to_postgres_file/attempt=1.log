@@ -1,0 +1,19 @@
+[2025-02-27T13:30:05.050+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_etl_dag.load_to_postgres_file scheduled__2025-02-27T13:25:00+00:00 [queued]>
+[2025-02-27T13:30:05.064+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_etl_dag.load_to_postgres_file scheduled__2025-02-27T13:25:00+00:00 [queued]>
+[2025-02-27T13:30:05.065+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-02-27T13:30:05.091+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_to_postgres_file> on 2025-02-27 13:25:00+00:00
+[2025-02-27T13:30:05.099+0000] {standard_task_runner.py:60} INFO - Started process 4348 to run task
+[2025-02-27T13:30:05.103+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'crypto_etl_dag', 'load_to_postgres_file', 'scheduled__2025-02-27T13:25:00+00:00', '--job-id', '88', '--raw', '--subdir', 'DAGS_FOLDER/crypto_etl_dag.py', '--cfg-path', '/tmp/tmptci7exfi']
+[2025-02-27T13:30:05.106+0000] {standard_task_runner.py:88} INFO - Job 88: Subtask load_to_postgres_file
+[2025-02-27T13:30:05.157+0000] {task_command.py:423} INFO - Running <TaskInstance: crypto_etl_dag.load_to_postgres_file scheduled__2025-02-27T13:25:00+00:00 [running]> on host 3ca41d2e953f
+[2025-02-27T13:30:05.235+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_etl_dag' AIRFLOW_CTX_TASK_ID='load_to_postgres_file' AIRFLOW_CTX_EXECUTION_DATE='2025-02-27T13:25:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-02-27T13:25:00+00:00'
+[2025-02-27T13:30:05.238+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-02-27T13:30:05.239+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/dags/scripts/load_to_postgres.py']
+[2025-02-27T13:30:05.252+0000] {subprocess.py:86} INFO - Output:
+[2025-02-27T13:30:06.573+0000] {subprocess.py:93} INFO - [INFO] Đã tải file '2025/02/27/20-30-03.csv' từ MinIO
+[2025-02-27T13:30:06.574+0000] {subprocess.py:93} INFO - [INFO] Đã nạp dữ liệu vào bảng 'raw_coin_data' trong PostgreSQL thành công.
+[2025-02-27T13:30:06.575+0000] {subprocess.py:93} INFO - [INFO] Quá trình ETL hoàn tất. Đã xử lý 1 file mới từ MinIO.
+[2025-02-27T13:30:06.689+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-02-27T13:30:06.725+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=crypto_etl_dag, task_id=load_to_postgres_file, execution_date=20250227T132500, start_date=20250227T133005, end_date=20250227T133006
+[2025-02-27T13:30:06.762+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-02-27T13:30:06.802+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

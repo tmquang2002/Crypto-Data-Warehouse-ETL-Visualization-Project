@@ -1,0 +1,33 @@
+[2025-02-28T03:10:10.622+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_etl_dag.extract_coingecko_file scheduled__2025-02-28T03:05:00+00:00 [queued]>
+[2025-02-28T03:10:10.651+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_etl_dag.extract_coingecko_file scheduled__2025-02-28T03:05:00+00:00 [queued]>
+[2025-02-28T03:10:10.653+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-02-28T03:10:10.699+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): extract_coingecko_file> on 2025-02-28 03:05:00+00:00
+[2025-02-28T03:10:10.722+0000] {standard_task_runner.py:60} INFO - Started process 123 to run task
+[2025-02-28T03:10:10.729+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'crypto_etl_dag', 'extract_coingecko_file', 'scheduled__2025-02-28T03:05:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/crypto_etl_dag.py', '--cfg-path', '/tmp/tmp_kq0ojmd']
+[2025-02-28T03:10:10.741+0000] {standard_task_runner.py:88} INFO - Job 5: Subtask extract_coingecko_file
+[2025-02-28T03:10:10.911+0000] {task_command.py:423} INFO - Running <TaskInstance: crypto_etl_dag.extract_coingecko_file scheduled__2025-02-28T03:05:00+00:00 [running]> on host 5df4c2d19f78
+[2025-02-28T03:10:11.189+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_etl_dag' AIRFLOW_CTX_TASK_ID='extract_coingecko_file' AIRFLOW_CTX_EXECUTION_DATE='2025-02-28T03:05:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-02-28T03:05:00+00:00'
+[2025-02-28T03:10:11.213+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-02-28T03:10:11.221+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/dags/scripts/extract_coingecko.py']
+[2025-02-28T03:10:11.257+0000] {subprocess.py:86} INFO - Output:
+[2025-02-28T03:10:14.532+0000] {subprocess.py:93} INFO - [extract_coingecko] Đã lưu dữ liệu vào file 'coin_data.csv'
+[2025-02-28T03:10:14.537+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-02-28T03:10:14.539+0000] {subprocess.py:93} INFO -   File "/opt/***/dags/scripts/extract_coingecko.py", line 73, in <module>
+[2025-02-28T03:10:14.539+0000] {subprocess.py:93} INFO -     minio_client.make_bucket(bucket_name)
+[2025-02-28T03:10:14.540+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/minio/api.py", line 656, in make_bucket
+[2025-02-28T03:10:14.541+0000] {subprocess.py:93} INFO -     self._url_open(
+[2025-02-28T03:10:14.541+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/minio/api.py", line 423, in _url_open
+[2025-02-28T03:10:14.542+0000] {subprocess.py:93} INFO -     raise response_error
+[2025-02-28T03:10:14.542+0000] {subprocess.py:93} INFO - minio.error.S3Error: S3 operation failed; code: BucketAlreadyOwnedByYou, message: Your previous request to create the named bucket succeeded and you already own it., resource: /coin-bucket, request_id: 1828408950184C28, host_id: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8, bucket_name: coin-bucket
+[2025-02-28T03:10:14.729+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-02-28T03:10:14.748+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-02-28T03:10:14.758+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=crypto_etl_dag, task_id=extract_coingecko_file, execution_date=20250228T030500, start_date=20250228T031010, end_date=20250228T031014
+[2025-02-28T03:10:14.799+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 5 for task extract_coingecko_file (Bash command failed. The command returned a non-zero exit code 1.; 123)
+[2025-02-28T03:10:14.840+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-02-28T03:10:14.900+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

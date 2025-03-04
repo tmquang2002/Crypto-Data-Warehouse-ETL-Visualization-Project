@@ -1,0 +1,19 @@
+[2025-02-28T05:49:27.047+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_etl_dag.extract_coingecko_file scheduled__2025-02-28T05:40:00+00:00 [queued]>
+[2025-02-28T05:49:27.091+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_etl_dag.extract_coingecko_file scheduled__2025-02-28T05:40:00+00:00 [queued]>
+[2025-02-28T05:49:27.103+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-02-28T05:49:27.168+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): extract_coingecko_file> on 2025-02-28 05:40:00+00:00
+[2025-02-28T05:49:27.204+0000] {standard_task_runner.py:60} INFO - Started process 2802 to run task
+[2025-02-28T05:49:27.221+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'crypto_etl_dag', 'extract_coingecko_file', 'scheduled__2025-02-28T05:40:00+00:00', '--job-id', '62', '--raw', '--subdir', 'DAGS_FOLDER/crypto_etl_dag.py', '--cfg-path', '/tmp/tmpe9s0tmo9']
+[2025-02-28T05:49:27.239+0000] {standard_task_runner.py:88} INFO - Job 62: Subtask extract_coingecko_file
+[2025-02-28T05:49:27.514+0000] {task_command.py:423} INFO - Running <TaskInstance: crypto_etl_dag.extract_coingecko_file scheduled__2025-02-28T05:40:00+00:00 [running]> on host 335ace54b661
+[2025-02-28T05:49:27.806+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_etl_dag' AIRFLOW_CTX_TASK_ID='extract_coingecko_file' AIRFLOW_CTX_EXECUTION_DATE='2025-02-28T05:40:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-02-28T05:40:00+00:00'
+[2025-02-28T05:49:27.812+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-02-28T05:49:27.814+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/dags/scripts/extract_coingecko.py']
+[2025-02-28T05:49:27.877+0000] {subprocess.py:86} INFO - Output:
+[2025-02-28T05:49:30.434+0000] {subprocess.py:93} INFO - [extract_coingecko] Đã lưu dữ liệu vào file 'coin_data.csv'
+[2025-02-28T05:49:30.436+0000] {subprocess.py:93} INFO - Bucket 'coin-bucket' đã tồn tại.
+[2025-02-28T05:49:30.437+0000] {subprocess.py:93} INFO - [upload_minio] Đã upload file 'coin_data.csv' lên MinIO tại '2025/02/28/12-49-30.csv' (giờ VN)
+[2025-02-28T05:49:30.601+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-02-28T05:49:30.644+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=crypto_etl_dag, task_id=extract_coingecko_file, execution_date=20250228T054000, start_date=20250228T054927, end_date=20250228T054930
+[2025-02-28T05:49:30.696+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-02-28T05:49:30.736+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

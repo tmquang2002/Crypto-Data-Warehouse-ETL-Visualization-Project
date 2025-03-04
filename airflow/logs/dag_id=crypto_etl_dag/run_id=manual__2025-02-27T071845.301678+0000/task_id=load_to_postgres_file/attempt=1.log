@@ -1,0 +1,29 @@
+[2025-02-27T07:18:50.372+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_etl_dag.load_to_postgres_file manual__2025-02-27T07:18:45.301678+00:00 [queued]>
+[2025-02-27T07:18:50.380+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_etl_dag.load_to_postgres_file manual__2025-02-27T07:18:45.301678+00:00 [queued]>
+[2025-02-27T07:18:50.381+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-02-27T07:18:50.393+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_to_postgres_file> on 2025-02-27 07:18:45.301678+00:00
+[2025-02-27T07:18:50.400+0000] {standard_task_runner.py:60} INFO - Started process 1708 to run task
+[2025-02-27T07:18:50.403+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'crypto_etl_dag', 'load_to_postgres_file', 'manual__2025-02-27T07:18:45.301678+00:00', '--job-id', '36', '--raw', '--subdir', 'DAGS_FOLDER/crypto_etl_dag.py', '--cfg-path', '/tmp/tmpf7lwu0ov']
+[2025-02-27T07:18:50.405+0000] {standard_task_runner.py:88} INFO - Job 36: Subtask load_to_postgres_file
+[2025-02-27T07:18:50.452+0000] {task_command.py:423} INFO - Running <TaskInstance: crypto_etl_dag.load_to_postgres_file manual__2025-02-27T07:18:45.301678+00:00 [running]> on host d7538f12d10b
+[2025-02-27T07:18:50.525+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_etl_dag' AIRFLOW_CTX_TASK_ID='load_to_postgres_file' AIRFLOW_CTX_EXECUTION_DATE='2025-02-27T07:18:45.301678+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-27T07:18:45.301678+00:00'
+[2025-02-27T07:18:50.527+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-02-27T07:18:50.529+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/dags/scripts/load_to_postgres.py']
+[2025-02-27T07:18:50.541+0000] {subprocess.py:86} INFO - Output:
+[2025-02-27T07:18:51.285+0000] {subprocess.py:93} INFO - [INFO] Đã tải file 'data_25_2_27_07_16.csv' từ MinIO về 'downloaded_data_25_2_27_07_16.csv'
+[2025-02-27T07:18:51.286+0000] {subprocess.py:93} INFO - [INFO] Đã nạp dữ liệu từ 'downloaded_data_25_2_27_07_16.csv' vào bảng 'raw_coin_data' trong PostgreSQL thành công.
+[2025-02-27T07:18:51.287+0000] {subprocess.py:93} INFO - [ERROR] Lỗi khi cập nhật danh sách file đã xử lý: relation "processed_files" does not exist
+[2025-02-27T07:18:51.287+0000] {subprocess.py:93} INFO - LINE 1: INSERT INTO processed_files (file_name) VALUES ('data_25_2_2...
+[2025-02-27T07:18:51.287+0000] {subprocess.py:93} INFO -                     ^
+[2025-02-27T07:18:51.288+0000] {subprocess.py:93} INFO - 
+[2025-02-27T07:18:51.288+0000] {subprocess.py:93} INFO - [INFO] Đã tải file 'data_25_2_27_07_18.csv' từ MinIO về 'downloaded_data_25_2_27_07_18.csv'
+[2025-02-27T07:18:51.288+0000] {subprocess.py:93} INFO - [INFO] Đã nạp dữ liệu từ 'downloaded_data_25_2_27_07_18.csv' vào bảng 'raw_coin_data' trong PostgreSQL thành công.
+[2025-02-27T07:18:51.288+0000] {subprocess.py:93} INFO - [ERROR] Lỗi khi cập nhật danh sách file đã xử lý: relation "processed_files" does not exist
+[2025-02-27T07:18:51.289+0000] {subprocess.py:93} INFO - LINE 1: INSERT INTO processed_files (file_name) VALUES ('data_25_2_2...
+[2025-02-27T07:18:51.289+0000] {subprocess.py:93} INFO -                     ^
+[2025-02-27T07:18:51.289+0000] {subprocess.py:93} INFO - 
+[2025-02-27T07:18:51.289+0000] {subprocess.py:93} INFO - [INFO] Quá trình ETL hoàn tất. Đã xử lý 2 file mới từ MinIO.
+[2025-02-27T07:18:51.358+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-02-27T07:18:51.383+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=crypto_etl_dag, task_id=load_to_postgres_file, execution_date=20250227T071845, start_date=20250227T071850, end_date=20250227T071851
+[2025-02-27T07:18:51.420+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-02-27T07:18:51.453+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
