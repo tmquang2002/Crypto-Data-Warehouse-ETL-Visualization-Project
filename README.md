@@ -8,7 +8,6 @@
 - [Technologies Used](#technologies-used)
 - [System Architecture](#system-architecture)
 - [Setup Instructions](#setup-instructions)
-- [Data Pipeline](#data-pipeline)
 - [Visualizations](#visualizations)
 - [Conclusion](#conclusion)
 - [Future Direction](#future-direction)
@@ -22,7 +21,7 @@ Crypto Data Warehouse ETL & Visualization Project is a complete system for colle
 - **MinIO**: Object storage for raw CSV files.
 - **PostgreSQL**: Data warehouse with Star Schema design.
 - **Metabase**: Data visualization and dashboard creation.
-- **Docker Compose**: Orchestrates services like PostgreSQL, MinIO, and Metabase.
+- **Docker Compose**: Orchestrates services like Airflow, PostgreSQL, MinIO, and Metabase.
 - **Airflow (Optional)**: Automates and schedules ETL jobs.
 
 ## System Architecture
@@ -69,7 +68,6 @@ Crypto Data Warehouse ETL & Visualization Project is a complete system for colle
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/tmquang2002/Crypto-Data-Warehouse-ETL-Visualization-Project.git
-cd crypto-dwh-etl
 ```
 
 ### 2. Configuration
@@ -82,10 +80,10 @@ docker-compose up -d
 This command starts containers for Airflow, PostgreSQL, MinIO, and Metabase.
 
 ### 4. Run the ETL Pipeline
+<img src="https://i.ibb.co/gL0QSCgk/airflow.png" alt="NCHMF" width="500"/>
 
 - Access the Airflow web interface at [http://localhost:8080](http://localhost:8080) and log in with the default credentials (`airflow` / `airflow`).
 - Activate the ETL DAG and trigger the job.
-<img src="https://i.ibb.co/gL0QSCgk/airflow.png" alt="NCHMF" width="500"/>
 - The ETL process includes the following steps:
   1. **Crawl Data**: Fetch cryptocurrency market data from the CoinGecko API.
   2. **Load to MinIO**: Store the raw data as CSV files in MinIO.
@@ -124,7 +122,7 @@ The dashboard built in Metabase provides key insights into cryptocurrency market
 
 
 ## Conclusion
-This project successfully automates the extraction, transformation, and loading of cryptocurrency market data into a structured Data Warehouse. With Metabase, users can interactively explore data and gain insights into market trends. The use of Docker Compose simplifies the deployment of PostgreSQL, MinIO, and Metabase, ensuring a streamlined setup.
+This project successfully automates the extraction, transformation, and loading of cryptocurrency market data into a structured Data Warehouse. With Metabase, users can interactively explore data and gain insights into market trends. The use of Docker Compose simplifies the deployment of Airflow, PostgreSQL, MinIO, and Metabase, ensuring a streamlined setup.
 
 ## Future Direction
 - Integrate additional data sources for broader market analysis.
