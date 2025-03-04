@@ -27,6 +27,9 @@ Crypto Data Warehouse ETL & Visualization Project is a complete system for colle
 
 ## System Architecture
 
+<img src="https://i.ibb.co/35sXshnq/img.png" alt="NCHMF" width="1000"/>
+
+
 ### 1. Data Collection
 - **Data Source**: CoinGecko API providing information on cryptocurrencies like Bitcoin, Ethereum, USDC, Tether, Binance Coin, Ripple, Cardano, Dogecoin, Solana, and Tron.
 - **Crawl & Extract**: A Python script fetches API data and saves it as CSV files.
